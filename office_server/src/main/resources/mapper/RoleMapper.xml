@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gong.mapper.RoleMapper">
+
+    <select id="getRoles" resultType="com.gong.pojo.Role">
+        SELECT tr.id, tr.`name`, tr.nameZh
+        FROM t_role AS tr
+                 LEFT JOIN t_admin_role AS tar ON tr.id = tar.rid
+        WHERE tar.adminId = #{adminId}
+    </select>
+</mapper>
