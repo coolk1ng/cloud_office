@@ -28,14 +28,14 @@ public class PositionController {
     private PositionService positionService;
 
     @ApiOperation(value = "获取所有职位信息")
-    @GetMapping("/")
+    @GetMapping("/getAllPosition")
     public List<Position> getPosition(){
         return positionService.list();
     }
 
     @ApiOperation(value = "添加职位信息")
-    @PostMapping("/")
-    public ResultBean addPosition(@RequestBody Position position){
+    @PostMapping("/addPosition")
+    public ResultBean addPosition(Position position){
         position.setCreateDate(new Date());
         if (positionService.save(position)){
             return ResultBean.success("添加成功!");
@@ -45,8 +45,8 @@ public class PositionController {
     }
 
     @ApiOperation(value = "更新职位信息")
-    @PutMapping("/")
-    public ResultBean updatePosition(@RequestBody Position position){
+    @PutMapping("/updatePosition")
+    public ResultBean updatePosition(Position position){
         if (positionService.updateById(position)){
             return ResultBean.success("更新成功!");
         }else{
@@ -55,8 +55,8 @@ public class PositionController {
     }
 
     @ApiOperation(value = "删除职位信息")
-    @DeleteMapping("/{id}")
-    public ResultBean deletePositionById(@PathVariable Integer id){
+    @DeleteMapping("/getPositionById")
+    public ResultBean deletePositionById(Integer id){
         if (positionService.removeById(id)){
             return ResultBean.success("删除成功!");
         }else {
@@ -65,7 +65,7 @@ public class PositionController {
     }
 
     @ApiOperation(value = "批量删除职位信息")
-    @DeleteMapping("/")
+    @DeleteMapping("/getPositionByIds")
     public ResultBean deletePositionByIds(Integer[] ids){
         if (positionService.removeByIds(Arrays.asList(ids))){
             return ResultBean.success("批量删除成功!");
