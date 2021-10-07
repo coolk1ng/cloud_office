@@ -3,6 +3,7 @@ package com.gong.controller;
 
 import com.gong.pojo.Menu;
 import com.gong.service.MenuService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/system/cfg")
+@Api(tags = "菜单列表")
 public class MenuController {
 
     @Autowired

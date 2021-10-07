@@ -12,7 +12,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
@@ -22,7 +21,7 @@ import java.security.Principal;
  * @author CodeSniper
  * @since 2021-09-05
  */
-@Api(tags = "LoginController")
+@Api(tags = "登录")
 @RestController
 public class LoginController {
 

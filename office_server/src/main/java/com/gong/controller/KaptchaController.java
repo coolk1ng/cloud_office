@@ -2,6 +2,7 @@ package com.gong.controller;
 
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ import java.io.IOException;
  * @since 2021-09-08
  */
 @RestController
+@Api(tags = "验证码")
 public class KaptchaController {
 
     @Autowired

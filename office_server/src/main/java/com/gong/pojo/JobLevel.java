@@ -5,10 +5,13 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Value;
 
 /**
  * <p>
@@ -20,7 +23,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("t_jobLevel")
+@TableName("t_job_level")
 @ApiModel(value="JobLevel对象", description="")
 public class JobLevel implements Serializable {
 
@@ -37,6 +40,7 @@ public class JobLevel implements Serializable {
     private String titleLevel;
 
     @ApiModelProperty(value = "创建时间")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date createDate;
 
     @ApiModelProperty(value = "是否启用")

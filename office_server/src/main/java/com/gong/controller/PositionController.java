@@ -4,6 +4,8 @@ package com.gong.controller;
 import com.gong.pojo.Position;
 import com.gong.service.PositionService;
 import com.gong.utils.ResultBean;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +23,8 @@ import java.util.List;
  * @since 2021-08-28
  */
 @RestController
-@RequestMapping("/position")
+@RequestMapping("/system/basic/position")
+@Api(tags = "职位管理")
 public class PositionController {
 
     @Autowired
@@ -35,7 +38,7 @@ public class PositionController {
 
     @ApiOperation(value = "添加职位信息")
     @PostMapping("/addPosition")
-    public ResultBean addPosition(Position position){
+    public ResultBean addPosition(@RequestBody Position position){
         position.setCreateDate(new Date());
         if (positionService.save(position)){
             return ResultBean.success("添加成功!");
@@ -46,7 +49,7 @@ public class PositionController {
 
     @ApiOperation(value = "更新职位信息")
     @PutMapping("/updatePosition")
-    public ResultBean updatePosition(Position position){
+    public ResultBean updatePosition(@RequestBody Position position){
         if (positionService.updateById(position)){
             return ResultBean.success("更新成功!");
         }else{
@@ -55,7 +58,7 @@ public class PositionController {
     }
 
     @ApiOperation(value = "删除职位信息")
-    @DeleteMapping("/getPositionById")
+    @DeleteMapping("/deletePositionById")
     public ResultBean deletePositionById(Integer id){
         if (positionService.removeById(id)){
             return ResultBean.success("删除成功!");
@@ -65,7 +68,7 @@ public class PositionController {
     }
 
     @ApiOperation(value = "批量删除职位信息")
-    @DeleteMapping("/getPositionByIds")
+    @DeleteMapping("/deletePositionByIds")
     public ResultBean deletePositionByIds(Integer[] ids){
         if (positionService.removeByIds(Arrays.asList(ids))){
             return ResultBean.success("批量删除成功!");
